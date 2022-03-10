@@ -10,4 +10,17 @@ class Employee extends Model
     use HasFactory;
 
     protected $guarded = [];
+
+
+    public function congees()
+    {
+       return $this->hasMany(Congee::class);
+    }
+
+
+
+    public function soldeCongee()
+    {
+        return $this->hasMany(SoldeCongee::class);
+    }
 }

@@ -15,8 +15,22 @@ return new class extends Migration
     {
         Schema::create('congees', function (Blueprint $table) {
             $table->id();
+
+            $table->bigInteger('employee_id')->unsigned();
+
+            $table->date('dateSortie');
+            $table->integer('dureeEnJour');
+
+            $table->foreign('employee_id')
+                ->references('id')
+                ->on('employees')
+                ->onCascade('delete');
+
             $table->timestamps();
         });
+
+
+
     }
 
     /**

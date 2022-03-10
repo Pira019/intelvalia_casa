@@ -17,7 +17,7 @@ class EmployeeController extends Controller
     public function index()
     {
 
-        //return EContract::all();
+         var_dump( EContract::cases());
     }
 
     /**
