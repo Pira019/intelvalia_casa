@@ -23,7 +23,7 @@ class CongeController extends Controller
      */
     public function index()
     {
-        //
+        return response()->json($this->congé->getAll());
     }
 
     /**
@@ -33,7 +33,7 @@ class CongeController extends Controller
      */
     public function create(Request $request)
     {
-        $this->congé->demangerConger($request);
+       return $this->congé->demangerConger($request->all());
     }
 
     /**

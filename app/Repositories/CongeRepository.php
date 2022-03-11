@@ -12,6 +12,7 @@ namespace App\Repositories;
 use App\Interfaces\IConge;
 use App\Models\Congee;
 use App\Models\SoldeCongee;
+use function PHPUnit\Framework\isEmpty;
 
 class CongeRepository implements  IConge
 {
@@ -38,14 +39,17 @@ class CongeRepository implements  IConge
         ])->first();
 
 
+
+
       if($employee){
 
-      if ($data['dureeEnjour'] - $employee['dureeEnjour'] > 0){
 
-          $this->conge::create([
+      if ($data['dureeEnjour'] - $employee['soldeRestant'] <= 0){
+
+          Congee::create([
               'dureeEnJour' => $data['dureeEnjour'],
-              'employeek_id' => $employee->employee_id,
-              'dateSortie' => $data['dateSortie'],
+              'employee_id' => $employee->employee_id,
+              'dateSortie' => date('Y-m-d',strtotime($data['dateSortie'])),
           ]);
 
           $this->soldeConge::where('id',$employee->id)
@@ -57,16 +61,16 @@ class CongeRepository implements  IConge
           return 'Solde restant insuffisant';
       }
 
-    }else{
-
-          return 'Solde insuffisant';
+      }else{
+          return 'Solde restant insuffisant';
       }
+
 
     }
 
 
     public function getAll()
     {
-        // TODO: Implement getAll() method.
+      return  $this->conge::all();
     }
 }
