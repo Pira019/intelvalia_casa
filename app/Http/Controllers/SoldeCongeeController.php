@@ -2,19 +2,36 @@
 
 namespace App\Http\Controllers;
 
+use App\Interfaces\IEmployeeRepo;
+use App\Interfaces\ISoldeConge;
 use App\Models\SoldeCongee;
 use Illuminate\Http\Request;
 
 class SoldeCongeeController extends Controller
 {
     /**
+     * SoldeCongeeController constructor.
+     */
+
+    protected  $soldeConge;
+
+    public function __construct(ISoldeConge $soldeConge, IEmployeeRepo $employeeRepo)
+    {
+        $this->soldeConge =$soldeConge;
+        $employeeRepo->calculerSoldeConge();
+    }
+
+
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
+     *
+     *
      */
     public function index()
     {
-        //
+     return response()->json($this->soldeConge->getAll());
     }
 
     /**

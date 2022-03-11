@@ -13,7 +13,7 @@ enum EStatus : int
 {
 
         case OUVRIER = 1;
-        case EMPLOYE = 2;
+        case EMPLOYEE = 2;
         case CADRE = 3;
 
 }

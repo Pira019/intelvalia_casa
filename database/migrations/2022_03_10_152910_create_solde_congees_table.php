@@ -22,8 +22,6 @@ return new class extends Migration
             $table->integer('annee');
             $table->bigInteger('employee_id')->unsigned();
 
-            $table->enum('status',['',1,2] );
-
             $table->float('soldeAcquis');
             $table->float('soldeRestant');
             $table->boolean('expire');

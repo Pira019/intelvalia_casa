@@ -2,25 +2,18 @@
 
 namespace App\Http\Controllers;
 
-use App\Interfaces\Calcules\ICalcules;
-use App\Interfaces\IEmployeeRepo;
-use App\Models\Employee;
+use App\Interfaces\IConge;
+use App\Models\Conge;
 use Illuminate\Http\Request;
 
-
-
-class EmployeeController extends Controller
+class CongeController extends Controller
 {
-    /**
-     * EmployeeController constructor.
-     */
 
-    private $employeeRepo;
+    private  $congé;
 
-    public function __construct(IEmployeeRepo $employeeRepo)
+    public function __construct(IConge $IConge)
     {
-
-        $this->employeeRepo = $employeeRepo;
+        $this->congé = $IConge;
     }
 
     /**
@@ -28,14 +21,9 @@ class EmployeeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-
-
-
     public function index()
     {
-
-        return response()->json($this->employeeRepo->getAll());
-
+        //
     }
 
     /**
@@ -43,11 +31,9 @@ class EmployeeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create(Request $request, ICalcules $calcules)
+    public function create(Request $request)
     {
-
-
-        return response()->json($calcules->dateDifference($request['start'],$request['end']));
+        $this->congé->demangerConger($request);
     }
 
     /**
@@ -56,17 +42,20 @@ class EmployeeController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+
+    //demande un conge
     public function store(Request $request)
     {
+
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Employee  $employee
+     * @param  \App\Models\Conge  $conge
      * @return \Illuminate\Http\Response
      */
-    public function show(Employee $employee)
+    public function show(Conge $conge)
     {
         //
     }
@@ -74,10 +63,10 @@ class EmployeeController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Employee  $employee
+     * @param  \App\Models\Conge  $conge
      * @return \Illuminate\Http\Response
      */
-    public function edit(Employee $employee)
+    public function edit(Conge $conge)
     {
         //
     }
@@ -86,10 +75,10 @@ class EmployeeController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Employee  $employee
+     * @param  \App\Models\Conge  $conge
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Employee $employee)
+    public function update(Request $request, Conge $conge)
     {
         //
     }
@@ -97,10 +86,10 @@ class EmployeeController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Employee  $employee
+     * @param  \App\Models\Conge  $conge
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Employee $employee)
+    public function destroy(Conge $conge)
     {
         //
     }

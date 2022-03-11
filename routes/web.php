@@ -18,3 +18,5 @@ Route::get('/', function () {
 });
 
 Route::resource('employee',\App\Http\Controllers\EmployeeController::class);
+Route::resource('soldeConge',\App\Http\Controllers\SoldeCongeeController::class);
+Route::resource('conge',\App\Http\Controllers\CongeController::class);

@@ -19,10 +19,13 @@ return new class extends Migration
             $table->string('nom',255);
             $table->string('prenom',255);
 
-            $table->integer('dureeContratEnsemaine');
+            $table->integer('statut');
+            $table->integer('contrat');
+
+            $table->integer('dureeContratEnsemaine')->nullable();
             $table->integer('age');
             $table->date('date_embauche');
-            $table->integer('period_essai');
+            $table->integer('period_essai')->nullable();
 
 
 
