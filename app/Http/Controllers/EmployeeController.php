@@ -47,7 +47,7 @@ class EmployeeController extends Controller
     {
 
 
-        return response()->json($calcules->dateDifference($request['start'],$request['end']));
+       // return response()->json($calcules->dateDifference($request['start'],$request['end']));
     }
 
     /**
